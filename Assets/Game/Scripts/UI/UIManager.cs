@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
 {
     GameManager gameManager;
 
+    public ArcadeSelector arcadeSelector;
 
     public void Init(GameManager inGameManager)
     {

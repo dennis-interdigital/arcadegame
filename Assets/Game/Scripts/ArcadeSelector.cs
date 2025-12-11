@@ -51,7 +51,7 @@ public class ArcadeSelector : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     // singleton guard
     private static ArcadeSelector instance;
 
-    void Awake()
+    public void Init()
     {
         // Singleton: prevent duplicates when returning to selector scene
         if (instance != null && instance != this)
@@ -61,7 +61,7 @@ public class ArcadeSelector : MonoBehaviour, IPointerDownHandler, IDragHandler, 
         }
 
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         // default transition canvas group
         if (transitionCanvasGroup == null)

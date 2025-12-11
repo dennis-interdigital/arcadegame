@@ -24,6 +24,8 @@ namespace InterDigital
             //READ ME: manager init here
 
             uiManager.Init(this);
+
+            uiManager.arcadeSelector.Init();
         }
 
         public void DoUpdate(float dt)
