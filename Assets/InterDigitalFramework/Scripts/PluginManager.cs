@@ -1,18 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PluginManager : MonoBehaviour
+namespace InterDigital
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum LogType
     {
-        
+        Log,
+        Warning,
+        Error
     }
 
-    // Update is called once per frame
-    void Update()
+    public class PluginManager : MonoBehaviour
     {
-        
+        public CoroutineCache coroutineCache;
+
+        public void Init(Main inMain)
+        {
+            GameObject coroutineCacheObj = new GameObject(typeof(CoroutineCache) + "");
+            coroutineCache = coroutineCacheObj.AddComponent<CoroutineCache>();
+            coroutineCache.Init();
+            DontDestroyOnLoad(coroutineCache);
+        }
+    }
+
+    public static class InterDigital
+    {
+        public static void Log(LogType type, string message)
+        {
+            Color logColor = Color.cyan;
+            string hexColor = ColorUtility.ToHtmlStringRGB(logColor);
+
+            string log = $"<color=#{hexColor}>[InterDigital]:</color> {message}";
+
+            switch (type)
+            {
+                case LogType.Log: Debug.Log(log); break;
+                case LogType.Warning: Debug.LogWarning(log); break;
+                case LogType.Error: Debug.LogError(log); break;
+            }
+        }
     }
 }
+

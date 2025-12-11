@@ -1,18 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace InterDigital
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GameManager : MonoBehaviour
     {
-        
-    }
+        public Main main;
+        public UserData userData;
+        public GameSupport gameSupport;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public UIManager uiManager;
+
+        public void Init(Main inMain)
+        {
+            main = inMain;
+            userData = main.userData;
+            gameSupport = main.gameSupport;
+
+            //READ ME: manager constructor here
+        }
+
+        public void InitManagers(long serverTime = 0)
+        {
+            //READ ME: manager init here
+
+            uiManager.Init(this);
+        }
+
+        public void DoUpdate(float dt)
+        {
+            uiManager.DoUpdate(dt);
+        }
     }
 }

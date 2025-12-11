@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using InterDigital;
 
-public class GameSupport : MonoBehaviour
+public class GameSupport
 {
-    // Start is called before the first frame update
-    void Start()
+    public Savehandler saveHandler;
+
+    Main main;
+    PluginManager pluginManager;
+
+    public void Init(Main inMain)
     {
-        
+        main = inMain;
+        pluginManager = main.pluginManager;
+
+        saveHandler = new Savehandler();
+
+        saveHandler.Init(main);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DoUpdate(float dt)
     {
-        
+
     }
 }

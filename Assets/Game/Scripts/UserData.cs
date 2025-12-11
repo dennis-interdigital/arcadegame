@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class UserData : MonoBehaviour
+public class UserData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public long lastPlayTime;
+    public int coin;
 
-    // Update is called once per frame
-    void Update()
+    public void Init(bool firstTimePlay = false)
     {
-        
+        if (firstTimePlay)
+        {
+            lastPlayTime = 0;
+            coin = 0;
+        }
     }
 }
