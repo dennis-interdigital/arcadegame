@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Game/Scenes/MainArcadeScene.unity
+    guid: be2aff831d986be4c8dec27f6ecc8156
+  - enabled: 1
+    path: Assets/ArcadeGames/GachaGame/GachaGame/Scenes/GachaGameScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/ArcadeGames/ClawMachine/Game/Scenes/ClawMachineMain.unity
+    guid: 650c1aec5e1032e42b0cbb623abeb99f
   m_configObjects: {}
