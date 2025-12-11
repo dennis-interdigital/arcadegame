@@ -53,6 +53,7 @@ public class ArcadeSelector : MonoBehaviour, IPointerDownHandler, IDragHandler, 
 
     public void Init()
     {
+        Application.targetFrameRate = 120;
         // Singleton: prevent duplicates when returning to selector scene
         if (instance != null && instance != this)
         {
