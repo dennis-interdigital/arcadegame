@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eae0e89f2fba63d419b093bf91719136, type: 3}
+  m_Name: ArcadeDatabase
+  m_EditorClassIdentifier: 
+  arcades:
+  - arcadeName: Gacha Game Simulator
+    arcadeId: GG01
+    icon: {fileID: 21300000, guid: 6b8e7d76047c1744687e7107c88f952a, type: 3}
+    sceneAsset: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
+    sceneName: GachaGameScene
+  - arcadeName: Claw Machine Simulator
+    arcadeId: CW01
+    icon: {fileID: 21300000, guid: f03402860318fad4785e4fc872a4cfd0, type: 3}
+    sceneAsset: {fileID: 102900000, guid: 650c1aec5e1032e42b0cbb623abeb99f, type: 3}
+    sceneName: ClawMachineMain
