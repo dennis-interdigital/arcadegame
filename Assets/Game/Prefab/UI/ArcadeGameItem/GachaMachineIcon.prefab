@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 5523533139437743537}
   - component: {fileID: 6200454275441219314}
   m_Layer: 5
-  m_Name: GachaArcadeIcon
+  m_Name: GachaMachineIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

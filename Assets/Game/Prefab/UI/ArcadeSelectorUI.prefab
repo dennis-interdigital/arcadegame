@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4484456512904031738}
   m_Layer: 5
-  m_Name: ArcadeContent
+  m_Name: RootIconContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 9}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 494.8395, y: 466.6366}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1394967789636594221
@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arcadeDatabase: {fileID: 11400000, guid: 5407adfd5d382f247a06898721f5e74c, type: 2}
-  previewParent: {fileID: 4484456512904031738}
+  rootArcadeGameItemContainer: {fileID: 4484456512904031738}
   previewSpacing: 800
   buttonNext: {fileID: 8216378977998737458}
   buttonPrev: {fileID: 6997972755059123100}

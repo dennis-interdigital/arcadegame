@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 8075249009444534072}
   - component: {fileID: 2953797899735314879}
   m_Layer: 5
-  m_Name: ClawArcadeIcon
+  m_Name: ClawMachineIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
