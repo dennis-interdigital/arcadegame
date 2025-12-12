@@ -1,14 +1,18 @@
-public class UserData
+namespace InterDigital
 {
-    public long lastPlayTime;
-    public int coin;
-
-    public void Init(bool firstTimePlay = false)
+    public class UserData
     {
-        if (firstTimePlay)
+        public long lastPlayTime;
+        public int coin;
+
+        public void Init(bool firstTimePlay = false)
         {
-            lastPlayTime = 0;
-            coin = 0;
+            if (firstTimePlay)
+            {
+                lastPlayTime = 0;
+                coin = 0;
+            }
         }
     }
 }
+

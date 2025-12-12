@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
@@ -105,6 +104,8 @@ public class ArcadeSelectorUI : BaseUI, IPointerDownHandler, IDragHandler, IEndD
         SnapToIndex(currentIndex, instant: true);
 
         RefreshUI();
+
+        transitionCanvasGroup.alpha = 1f;
     }
 
     void SetIndex(int index)
@@ -156,18 +157,24 @@ public class ArcadeSelectorUI : BaseUI, IPointerDownHandler, IDragHandler, IEndD
         buttonPlay.interactable = (arcadeDatabase != null && arcadeDatabase.arcadeGameItemList.Count > 0);
     }
 
-    IEnumerator DoTransitionAndLoad(string sceneName)
+    public void ForceShow()
     {
-        transitionCanvasGroup.blocksRaycasts = true;
+        transitionCanvasGroup.alpha = 1f;
+    }
 
-        yield return transitionCanvasGroup.DOFade(1f, fadeDuration).SetEase(fadeEase).WaitForCompletion();
-        yield return new WaitForSeconds(0.08f);
+    public IEnumerator HideTransition()
+    {
+        //transitionCanvasGroup.blocksRaycasts = true;
+
+        //yield return transitionCanvasGroup.DOFade(1f, fadeDuration).SetEase(fadeEase).WaitForCompletion();
+        //yield return new WaitForSeconds(0.08f);
+        //yield return transitionCanvasGroup.DOFade(0f, fadeDuration).SetEase(fadeEase).WaitForCompletion();
+        //transitionCanvasGroup.blocksRaycasts = false;
+
+        //yield return new WaitForSeconds(fadeDuration);
+
+        //SceneManager.LoadScene(sceneName);
         yield return transitionCanvasGroup.DOFade(0f, fadeDuration).SetEase(fadeEase).WaitForCompletion();
-        transitionCanvasGroup.blocksRaycasts = false;
-
-        yield return new WaitForSeconds(fadeDuration);
-
-        SceneManager.LoadScene(sceneName);
     }
 
     public void OnClickNext()
@@ -198,7 +205,7 @@ public class ArcadeSelectorUI : BaseUI, IPointerDownHandler, IDragHandler, IEndD
             seq.Append(t.DOScale(selectedScale, 0.12f));
         }
 
-        StartCoroutine(DoTransitionAndLoad(sceneToLoad));
+        gameManager.LoadGameScene(sceneToLoad);
     }
 
     public void OnPointerDown(PointerEventData eventData)
