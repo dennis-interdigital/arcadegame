@@ -1,16 +1,15 @@
-// ArcadeSelector.cs
-// Place this on a GameObject in your UI scene. This script persists across scene loads (singleton).
-// Requires DOTween (for tweens) and Unity UI (Image/Text/Button).
+using DG.Tweening;
+using InterDigital;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using DG.Tweening;
-using TMPro;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class ArcadeSelector : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
+public class ArcadeSelectorUI : BaseUI, IPointerDownHandler, IDragHandler, IEndDragHandler
 {
     [Header("Data")]
     public ArcadeDatabase arcadeDatabase; // Your single SO with arcades list
@@ -39,7 +38,7 @@ public class ArcadeSelector : MonoBehaviour, IPointerDownHandler, IDragHandler, 
 
     // runtime
     int currentIndex = 0;
-    List<GameObject> instantiatedPreviews = new List<GameObject>();
+    List<GameObject> activeArcadeItemUIList = new List<GameObject>();
 
     // dragging
     bool isDragging = false;
@@ -47,64 +46,27 @@ public class ArcadeSelector : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     Vector2 pointerCurrentPos;
     Vector3 previewsAnchorStartPos;
 
-    // singleton guard
-    private static ArcadeSelector instance;
-
-    public void Init()
+    public override void Init(GameManager inGameManager)
     {
-        Application.targetFrameRate = 120;
-        // Singleton: prevent duplicates when returning to selector scene
-        if (instance != null && instance != this)
+        base.Init(inGameManager);
+
+        buttonNext.onClick.AddListener(OnClickNext);
+        buttonPrev.onClick.AddListener(OnClickPrev);
+        buttonPlay.onClick.AddListener(OnClickPlay);
+
+        int count = activeArcadeItemUIList.Count;
+        for (int i = 0; i < count; i++)
         {
-            Destroy(gameObject);
-            return;
+            GameObject obj = activeArcadeItemUIList[i];
+            if (obj != null)
+                Destroy(obj);
         }
+        activeArcadeItemUIList.Clear();
 
-        instance = this;
-        //DontDestroyOnLoad(gameObject);
-
-        // default transition canvas group
-        if (transitionCanvasGroup == null)
+        count = arcadeDatabase.arcades.Count;
+        for (int i = 0; i < count; i++)
         {
-            transitionCanvasGroup = GetComponent<CanvasGroup>();
-            if (transitionCanvasGroup == null)
-            {
-                transitionCanvasGroup = gameObject.AddComponent<CanvasGroup>();
-            }
-        }
-
-        // wire buttons
-        if (buttonNext != null) buttonNext.onClick.AddListener(OnNext);
-        if (buttonPrev != null) buttonPrev.onClick.AddListener(OnPrev);
-        if (buttonPlay != null) buttonPlay.onClick.AddListener(OnPlay);
-
-        // build previews
-        BuildPreviews();
-        UpdateUIImmediate();
-
-        // start invisible transition (clear)
-        //transitionCanvasGroup.alpha = 0f;
-        //transitionCanvasGroup.blocksRaycasts = false;
-    }
-
-    void OnDestroy()
-    {
-        if (instance == this) instance = null;
-
-        if (buttonNext != null) buttonNext.onClick.RemoveListener(OnNext);
-        if (buttonPrev != null) buttonPrev.onClick.RemoveListener(OnPrev);
-        if (buttonPlay != null) buttonPlay.onClick.RemoveListener(OnPlay);
-    }
-
-    void BuildPreviews()
-    {
-        ClearPreviews();
-
-        if (arcadeDatabase == null || arcadeDatabase.arcades == null) return;
-
-        for (int i = 0; i < arcadeDatabase.arcades.Count; i++)
-        {
-            var entry = arcadeDatabase.arcades[i];
+            ArcadeDatabase.ArcadeEntry entry = arcadeDatabase.arcades[i];
             GameObject go = null;
 
             // If your ArcadeEntry has a previewPrefab field, reflection will pick it up (optional)
@@ -135,99 +97,31 @@ public class ArcadeSelector : MonoBehaviour, IPointerDownHandler, IDragHandler, 
             }
 
             go.transform.localScale = normalScale;
-            instantiatedPreviews.Add(go);
+            activeArcadeItemUIList.Add(go);
         }
 
         previewsAnchorStartPos = previewParent != null ? (Vector3)previewParent.localPosition : Vector3.zero;
-        currentIndex = Mathf.Clamp(currentIndex, 0, Mathf.Max(0, instantiatedPreviews.Count - 1));
+        currentIndex = Mathf.Clamp(currentIndex, 0, Mathf.Max(0, activeArcadeItemUIList.Count - 1));
         SnapToIndex(currentIndex, instant: true);
+
+        RefreshUI();
     }
 
-    void ClearPreviews()
-    {
-        for (int i = 0; i < instantiatedPreviews.Count; i++)
-        {
-            if (instantiatedPreviews[i] != null)
-                Destroy(instantiatedPreviews[i]);
-        }
-        instantiatedPreviews.Clear();
-    }
-
-    #region Navigation
-
-    public void OnNext()
+    public void OnClickNext()
     {
         if (arcadeDatabase == null || arcadeDatabase.arcades.Count == 0) return;
         int newIndex = Mathf.Clamp(currentIndex + 1, 0, arcadeDatabase.arcades.Count - 1);
         if (newIndex != currentIndex) SetIndex(newIndex);
     }
 
-    public void OnPrev()
+    public void OnClickPrev()
     {
         if (arcadeDatabase == null || arcadeDatabase.arcades.Count == 0) return;
         int newIndex = Mathf.Clamp(currentIndex - 1, 0, arcadeDatabase.arcades.Count - 1);
         if (newIndex != currentIndex) SetIndex(newIndex);
     }
 
-    void SetIndex(int index)
-    {
-        if (index < 0 || arcadeDatabase == null || index >= arcadeDatabase.arcades.Count) return;
-        int previous = currentIndex;
-        currentIndex = index;
-        SnapToIndex(currentIndex, instant: false);
-        UpdateUI(previousIndex: previous);
-    }
-
-    void SnapToIndex(int index, bool instant)
-    {
-        if (instantiatedPreviews.Count == 0 || previewParent == null) return;
-
-        Vector3 target = previewsAnchorStartPos + Vector3.left * (index * previewSpacing);
-
-        if (instant)
-            previewParent.localPosition = target;
-        else
-            previewParent.DOLocalMove(target, 0.35f).SetEase(Ease.OutCubic);
-
-        // zoom selected and reset others
-        for (int i = 0; i < instantiatedPreviews.Count; i++)
-        {
-            if (instantiatedPreviews[i] == null) continue;
-            instantiatedPreviews[i].transform.DOKill();
-            if (i == index)
-                instantiatedPreviews[i].transform.DOScale(selectedScale, zoomDuration).SetEase(Ease.OutBack);
-            else
-                instantiatedPreviews[i].transform.DOScale(normalScale, zoomDuration).SetEase(Ease.OutCubic);
-        }
-    }
-
-    void UpdateUI(int previousIndex = -1)
-    {
-        if (arcadeDatabase != null && arcadeDatabase.arcades.Count > 0)
-        {
-            var entry = arcadeDatabase.arcades[currentIndex];
-            if (textName != null) textName.text = entry.arcadeName ?? "<unknown>";
-        }
-        else
-        {
-            if (textName != null) textName.text = "-";
-        }
-
-        if (buttonPrev != null) buttonPrev.interactable = currentIndex > 0;
-        if (buttonNext != null) buttonNext.interactable = (arcadeDatabase != null && currentIndex < arcadeDatabase.arcades.Count - 1);
-        if (buttonPlay != null) buttonPlay.interactable = (arcadeDatabase != null && arcadeDatabase.arcades.Count > 0);
-    }
-
-    void UpdateUIImmediate()
-    {
-        UpdateUI(previousIndex: -1);
-    }
-
-    #endregion
-
-    #region Play / Load with Transition
-
-    public void OnPlay()
+    public void OnClickPlay()
     {
         if (arcadeDatabase == null || arcadeDatabase.arcades.Count == 0) return;
         var entry = arcadeDatabase.arcades[currentIndex];
@@ -246,9 +140,9 @@ public class ArcadeSelector : MonoBehaviour, IPointerDownHandler, IDragHandler, 
         }
 
         // Play selection punch zoom
-        if (instantiatedPreviews.Count > currentIndex && instantiatedPreviews[currentIndex] != null)
+        if (activeArcadeItemUIList.Count > currentIndex && activeArcadeItemUIList[currentIndex] != null)
         {
-            var t = instantiatedPreviews[currentIndex].transform;
+            var t = activeArcadeItemUIList[currentIndex].transform;
             t.DOKill();
             Sequence seq = DOTween.Sequence();
             seq.Append(t.DOScale(selectedScale * 1.07f, 0.12f));
@@ -259,7 +153,56 @@ public class ArcadeSelector : MonoBehaviour, IPointerDownHandler, IDragHandler, 
         StartCoroutine(DoTransitionAndLoad(sceneToLoad));
     }
 
-    System.Collections.IEnumerator DoTransitionAndLoad(string sceneName)
+    void SetIndex(int index)
+    {
+        if (index < 0 || arcadeDatabase == null || index >= arcadeDatabase.arcades.Count) return;
+        int previous = currentIndex;
+        currentIndex = index;
+        SnapToIndex(currentIndex, instant: false);
+        RefreshUI();
+    }
+
+    void SnapToIndex(int index, bool instant)
+    {
+        if (activeArcadeItemUIList.Count == 0 || previewParent == null) return;
+
+        Vector3 target = previewsAnchorStartPos + Vector3.left * (index * previewSpacing);
+
+        if (instant)
+            previewParent.localPosition = target;
+        else
+            previewParent.DOLocalMove(target, 0.35f).SetEase(Ease.OutCubic);
+
+        // zoom selected and reset others
+        for (int i = 0; i < activeArcadeItemUIList.Count; i++)
+        {
+            if (activeArcadeItemUIList[i] == null) continue;
+            activeArcadeItemUIList[i].transform.DOKill();
+            if (i == index)
+                activeArcadeItemUIList[i].transform.DOScale(selectedScale, zoomDuration).SetEase(Ease.OutBack);
+            else
+                activeArcadeItemUIList[i].transform.DOScale(normalScale, zoomDuration).SetEase(Ease.OutCubic);
+        }
+    }
+
+    void RefreshUI()
+    {
+        if (arcadeDatabase != null && arcadeDatabase.arcades.Count > 0)
+        {
+            var entry = arcadeDatabase.arcades[currentIndex];
+            if (textName != null) textName.text = entry.arcadeName ?? "<unknown>";
+        }
+        else
+        {
+            if (textName != null) textName.text = "-";
+        }
+
+        buttonPrev.interactable = currentIndex > 0;
+        buttonNext.interactable = (arcadeDatabase != null && currentIndex < arcadeDatabase.arcades.Count - 1);
+        buttonPlay.interactable = (arcadeDatabase != null && arcadeDatabase.arcades.Count > 0);
+    }
+
+    IEnumerator DoTransitionAndLoad(string sceneName)
     {
         // make sure transition blocks input
         transitionCanvasGroup.blocksRaycasts = true;
@@ -282,10 +225,6 @@ public class ArcadeSelector : MonoBehaviour, IPointerDownHandler, IDragHandler, 
         // load scene (synchronous load; change to async if you prefer)
         SceneManager.LoadScene(sceneName);
     }
-
-    #endregion
-
-    #region Swipe / Drag (UI events)
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -312,13 +251,11 @@ public class ArcadeSelector : MonoBehaviour, IPointerDownHandler, IDragHandler, 
 
         if (Mathf.Abs(deltaX) >= swipeThreshold)
         {
-            if (deltaX < 0f) OnNext(); else OnPrev();
+            if (deltaX < 0f) OnClickNext(); else OnClickPrev();
         }
         else
         {
             SnapToIndex(currentIndex, instant: false);
         }
     }
-
-    #endregion
 }

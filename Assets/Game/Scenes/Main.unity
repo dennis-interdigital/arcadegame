@@ -392,7 +392,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d398e6dd09572d4e84edb4772c21f9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 387558665d9552b4f93618a30bf5e4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &832575517
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a329e48c0877466429637a8283a2e06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arcadeSelector: {fileID: 671948378}
+  arcadeSelectorUI: {fileID: 671948378}
 --- !u!114 &1831159779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,7 +733,7 @@ PrefabInstance:
     - target: {fileID: 4644542236000923188, guid: aad5447201c0fd849afa7e6ccc3126a4,
         type: 3}
       propertyPath: m_Name
-      value: StartingUI
+      value: ArcadeSelector
       objectReference: {fileID: 0}
     - target: {fileID: 6084196341742469638, guid: aad5447201c0fd849afa7e6ccc3126a4,
         type: 3}

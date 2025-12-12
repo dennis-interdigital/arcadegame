@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 8916910940692979554}
   - component: {fileID: 3930470440961846028}
   m_Layer: 5
-  m_Name: StartingUI
+  m_Name: ArcadeSelectorUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4644542236000923188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d398e6dd09572d4e84edb4772c21f9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 387558665d9552b4f93618a30bf5e4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   arcadeDatabase: {fileID: 11400000, guid: 5407adfd5d382f247a06898721f5e74c, type: 2}

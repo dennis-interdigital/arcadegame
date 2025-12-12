@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+using InterDigital;
 using UnityEngine;
 
 public class BaseUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    protected GameManager gameManager;
+    protected UIManager uiManager;
+
+    public virtual void Init(GameManager inGameManager)
     {
-        
+        gameManager = inGameManager;
+        uiManager = inGameManager.uiManager;
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void DoUpdate(float dt)
     {
-        
+
     }
 }
