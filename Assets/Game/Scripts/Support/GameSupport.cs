@@ -1,24 +1,26 @@
-using InterDigital;
-
-public class GameSupport
+namespace InterDigital
 {
-    public Savehandler saveHandler;
-
-    Main main;
-    PluginManager pluginManager;
-
-    public void Init(Main inMain)
+    public class GameSupport
     {
-        main = inMain;
-        pluginManager = main.pluginManager;
+        public Savehandler saveHandler;
 
-        saveHandler = new Savehandler();
+        Main main;
+        PluginManager pluginManager;
 
-        saveHandler.Init(main);
-    }
+        public void Init(Main inMain)
+        {
+            main = inMain;
+            pluginManager = main.pluginManager;
 
-    public void DoUpdate(float dt)
-    {
+            saveHandler = new Savehandler();
 
+            saveHandler.Init(main);
+        }
+
+        public void DoUpdate(float dt)
+        {
+
+        }
     }
 }
+
