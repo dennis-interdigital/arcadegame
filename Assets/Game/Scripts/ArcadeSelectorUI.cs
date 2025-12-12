@@ -158,59 +158,35 @@ public class ArcadeSelectorUI : BaseUI, IPointerDownHandler, IDragHandler, IEndD
 
     IEnumerator DoTransitionAndLoad(string sceneName)
     {
-        // make sure transition blocks input
         transitionCanvasGroup.blocksRaycasts = true;
 
-        // fade to 1
         yield return transitionCanvasGroup.DOFade(1f, fadeDuration).SetEase(fadeEase).WaitForCompletion();
-
-        // optionally wait a short moment so fade completes visually
         yield return new WaitForSeconds(0.08f);
-
-
-        // after scene load, keep selector alive (already DontDestroyOnLoad)
-        // you might want to hide or reposition the selector in the new scene:
-        // keep transition visible for a moment, then fade back in
         yield return transitionCanvasGroup.DOFade(0f, fadeDuration).SetEase(fadeEase).WaitForCompletion();
         transitionCanvasGroup.blocksRaycasts = false;
 
         yield return new WaitForSeconds(fadeDuration);
 
-        // load scene (synchronous load; change to async if you prefer)
         SceneManager.LoadScene(sceneName);
     }
 
     public void OnClickNext()
     {
-        if (arcadeDatabase == null || arcadeDatabase.arcadeGameItemList.Count == 0) return;
         int newIndex = Mathf.Clamp(currentIndex + 1, 0, arcadeDatabase.arcadeGameItemList.Count - 1);
         if (newIndex != currentIndex) SetIndex(newIndex);
     }
 
     public void OnClickPrev()
     {
-        if (arcadeDatabase == null || arcadeDatabase.arcadeGameItemList.Count == 0) return;
         int newIndex = Mathf.Clamp(currentIndex - 1, 0, arcadeDatabase.arcadeGameItemList.Count - 1);
         if (newIndex != currentIndex) SetIndex(newIndex);
     }
 
     public void OnClickPlay()
     {
-        if (arcadeDatabase == null || arcadeDatabase.arcadeGameItemList.Count == 0) return;
-        var entry = arcadeDatabase.arcadeGameItemList[currentIndex];
-        if (entry == null)
-        {
-            Debug.LogWarning("ArcadeSelector: selected entry is null.");
-            return;
-        }
+        ArcadeGameItem item = arcadeDatabase.arcadeGameItemList[currentIndex];
 
-        // get sceneName from entry (ArcadeEntry has sceneName)
-        string sceneToLoad = entry.sceneName;
-        if (string.IsNullOrEmpty(sceneToLoad))
-        {
-            Debug.LogWarning($"ArcadeSelector: sceneName for '{entry.name}' is empty.");
-            return;
-        }
+        string sceneToLoad = item.sceneName;
 
         // Play selection punch zoom
         if (activeArcadeItemUIList.Count > currentIndex && activeArcadeItemUIList[currentIndex] != null)
@@ -222,7 +198,6 @@ public class ArcadeSelectorUI : BaseUI, IPointerDownHandler, IDragHandler, IEndD
             seq.Append(t.DOScale(selectedScale, 0.12f));
         }
 
-        // Start transition coroutine (fade out) then load scene
         StartCoroutine(DoTransitionAndLoad(sceneToLoad));
     }
 
