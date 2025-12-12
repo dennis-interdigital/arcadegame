@@ -17,7 +17,6 @@ public class ArcadeSelector : MonoBehaviour, IPointerDownHandler, IDragHandler, 
 
     [Header("Preview / Layout")]
     public RectTransform previewParent;    // Parent RectTransform where previews will be instantiated
-    public GameObject fallbackPreviewPrefab; // A simple prefab with an Image (optional)
     public float previewSpacing = 600f;    // spacing between previews (X axis)
 
     [Header("UI")]
@@ -121,24 +120,7 @@ public class ArcadeSelector : MonoBehaviour, IPointerDownHandler, IDragHandler, 
             // fallback
             if (go == null)
             {
-                if (fallbackPreviewPrefab != null)
-                {
-                    go = Instantiate(fallbackPreviewPrefab, previewParent);
-                }
-                else
-                {
-                    // create a simple image object so something appears
-                    GameObject simple = new GameObject($"ArcadePreview_{i}", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
-                    simple.transform.SetParent(previewParent, false);
-                    go = simple;
-                }
-
-                var image = go.GetComponentInChildren<Image>();
-                if (image != null && entry.icon != null)
-                {
-                    image.sprite = entry.icon;
-                    image.preserveAspect = true;
-                }
+                go = Instantiate(entry.iconPrefab, previewParent);
             }
 
             // position horizontally

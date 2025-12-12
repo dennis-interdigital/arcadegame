@@ -15,7 +15,7 @@ public class ArcadeDatabase : ScriptableObject
         public string arcadeId;
 
         [Header("Visual")]
-        public Sprite icon;
+        public GameObject iconPrefab;
 
 #if UNITY_EDITOR
         [Header("Scene Reference (Editor Only)")]

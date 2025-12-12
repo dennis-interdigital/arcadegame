@@ -15,11 +15,13 @@ MonoBehaviour:
   arcades:
   - arcadeName: Gacha Game Simulator
     arcadeId: GG01
-    icon: {fileID: 21300000, guid: 6b8e7d76047c1744687e7107c88f952a, type: 3}
+    iconPrefab: {fileID: 6907782877323676881, guid: 6e9ee51a869ea054f861b3f105e59e47,
+      type: 3}
     sceneAsset: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
     sceneName: GachaGameScene
   - arcadeName: Claw Machine Simulator
     arcadeId: CW01
-    icon: {fileID: 21300000, guid: f03402860318fad4785e4fc872a4cfd0, type: 3}
+    iconPrefab: {fileID: 7164061512438093400, guid: e2de0416e43811c4db7a1b817cadb106,
+      type: 3}
     sceneAsset: {fileID: 102900000, guid: 650c1aec5e1032e42b0cbb623abeb99f, type: 3}
     sceneName: ClawMachineMain

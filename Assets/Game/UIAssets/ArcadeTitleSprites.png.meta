@@ -1,0 +1,465 @@
+fileFormatVersion: 2
+guid: b54e5678b39b1f5439fa5647bf12feee
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ArcadeTitleSprites_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1320
+        width: 538
+        height: 537
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 866a37a1a9d279447803a73cb66e7396
+      internalID: 560574114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcadeTitleSprites_1
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 1782
+        width: 396
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d67960313c03b32478040a3d535158ed
+      internalID: 1920323508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcadeTitleSprites_2
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 1216
+        width: 592
+        height: 621
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a144193811c87134783b0dea7b350d70
+      internalID: -1624564905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcadeTitleSprites_5
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 1512
+        width: 16
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b38863d2074a97644b836851f7f26941
+      internalID: 1790692980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcadeTitleSprites_6
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 972
+        width: 914
+        height: 340
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85571e6c4a470d446bf3bd387cd03689
+      internalID: -135186923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcadeTitleSprites_7
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 387
+        width: 596
+        height: 579
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b1e32838c042334c988ebe5f1e43ac1
+      internalID: 124838614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcadeTitleSprites_14
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 616
+        width: 324
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f47b0f3b51c22344e8582279984e9728
+      internalID: 8131673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcadeTitleSprites_29
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 12
+        width: 741
+        height: 366
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa6f5cb22cd17584f83358431a368e34
+      internalID: -1888813950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcadeTitleSprites_37
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 24
+        width: 849
+        height: 312
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8926a93256702ac4bafca8fbb03d191a
+      internalID: 1405681121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcadeTitleSprites_3
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 1739
+        width: 98
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e647d4e8ea231d4792175ae5616b58e
+      internalID: -522620611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcadeTitleSprites_4
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 1515
+        width: 72
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f75ad4929fc19a48986f843ec32e032
+      internalID: -1313133313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcadeTitleSprites_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1517
+        width: 72
+        height: 170
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa7832d41cd406d46823fb42abf280cf
+      internalID: 1291442390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 48f3f561c0e61144fa57275be12a3853
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      ArcadeTitleSprites_0: 560574114
+      ArcadeTitleSprites_1: 1920323508
+      ArcadeTitleSprites_10: -1113391563
+      ArcadeTitleSprites_11: 690749502
+      ArcadeTitleSprites_12: 1927485530
+      ArcadeTitleSprites_13: 412178153
+      ArcadeTitleSprites_14: 8131673
+      ArcadeTitleSprites_15: -533179649
+      ArcadeTitleSprites_16: -911309004
+      ArcadeTitleSprites_17: 933299887
+      ArcadeTitleSprites_18: 1489659530
+      ArcadeTitleSprites_19: 253807436
+      ArcadeTitleSprites_2: -1624564905
+      ArcadeTitleSprites_20: -1097865317
+      ArcadeTitleSprites_21: 1297895085
+      ArcadeTitleSprites_22: -1647912345
+      ArcadeTitleSprites_23: 488890076
+      ArcadeTitleSprites_24: -2106457097
+      ArcadeTitleSprites_25: -1957284316
+      ArcadeTitleSprites_26: 1885900139
+      ArcadeTitleSprites_27: -1498968484
+      ArcadeTitleSprites_28: -724933407
+      ArcadeTitleSprites_29: -1888813950
+      ArcadeTitleSprites_3: -522620611
+      ArcadeTitleSprites_30: -1266634494
+      ArcadeTitleSprites_31: -47852278
+      ArcadeTitleSprites_32: 2009250188
+      ArcadeTitleSprites_33: -1430178786
+      ArcadeTitleSprites_34: 136120545
+      ArcadeTitleSprites_35: -2031896626
+      ArcadeTitleSprites_36: 968986068
+      ArcadeTitleSprites_37: 1405681121
+      ArcadeTitleSprites_38: -604865478
+      ArcadeTitleSprites_39: 637066176
+      ArcadeTitleSprites_4: -1313133313
+      ArcadeTitleSprites_40: -611404900
+      ArcadeTitleSprites_41: 909369089
+      ArcadeTitleSprites_42: -1372292746
+      ArcadeTitleSprites_43: -1584738634
+      ArcadeTitleSprites_44: -1039199200
+      ArcadeTitleSprites_45: -158959339
+      ArcadeTitleSprites_46: 7999266
+      ArcadeTitleSprites_5: 1790692980
+      ArcadeTitleSprites_6: -135186923
+      ArcadeTitleSprites_7: 124838614
+      ArcadeTitleSprites_8: 1291442390
+      ArcadeTitleSprites_9: -891194284
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
