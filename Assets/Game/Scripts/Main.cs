@@ -1,9 +1,19 @@
+using System.ComponentModel;
 using UnityEngine;
 
 namespace InterDigital
 {
     public class Main : MonoBehaviour
     {
+        public static Main Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+        static Main instance;
+
         public UserData userData;
 
         public PluginManager pluginManager;
@@ -22,6 +32,8 @@ namespace InterDigital
 
             Input.multiTouchEnabled = false;
             DontDestroyOnLoad(gameObject);
+
+            instance = this;
         }
 
         void Start()

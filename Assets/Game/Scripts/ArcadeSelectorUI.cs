@@ -178,6 +178,11 @@ namespace InterDigital
             yield return transitionCanvasGroup.DOFade(0f, fadeDuration).SetEase(fadeEase).WaitForCompletion();
         }
 
+        public IEnumerator ShowTransition()
+        {
+            yield return transitionCanvasGroup.DOFade(1f, fadeDuration).SetEase(fadeEase).WaitForCompletion();
+        }
+
         public void OnClickNext()
         {
             int newIndex = Mathf.Clamp(currentIndex + 1, 0, arcadeDatabase.arcadeGameItemList.Count - 1);

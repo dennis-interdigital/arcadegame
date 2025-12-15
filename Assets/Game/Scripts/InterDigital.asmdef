@@ -2,8 +2,6 @@
     "name": "InterDigital",
     "rootNamespace": "",
     "references": [
-        "GUID:5365f808b2b1ff3478202bb5a35566eb",
-        "GUID:9062df026c9dd424895b4511d9dac150",
         "GUID:262c638fc082c4041b0762f09dd39830",
         "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
