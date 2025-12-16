@@ -22,6 +22,8 @@ public class UIManager : MonoBehaviour
     public List<UIClass> uiList;
     [HideInInspector] public UIClass currUIClass;
 
+    public OverlayMenuUI overlayMenuUI;
+
     GameManager gameManager;
 
     public void Init(GameManager inGameManager)
@@ -34,6 +36,8 @@ public class UIManager : MonoBehaviour
         {
             uiList[i].baseUI.Init(inGameManager);
         }
+
+        overlayMenuUI.Init(gameManager);
 
         ShowUI(UIState.ArcadeSelector);
     }
