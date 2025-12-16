@@ -56,6 +56,7 @@ namespace InterDigital
             ArcadeSelectorUI arcadeSelectorUI = uiManager.currUIClass.baseUI as ArcadeSelectorUI;
 
             yield return arcadeSelectorUI.HideTransition();
+            uiManager.overlayMenuUI.gameObject.SetActive(false);
 
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
             operation.allowSceneActivation = false;
@@ -99,6 +100,7 @@ namespace InterDigital
             ArcadeSelectorUI arcadeSelectorUI = uiManager.currUIClass.baseUI as ArcadeSelectorUI;
 
             uiManager.objBG.SetActive(true);
+            uiManager.overlayMenuUI.gameObject.SetActive(true);
             yield return arcadeSelectorUI.ShowTransition();
         }
     }
