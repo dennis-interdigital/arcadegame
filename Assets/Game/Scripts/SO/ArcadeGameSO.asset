@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: ArcadeGameSO
   m_EditorClassIdentifier: 
   arcadeGameItemList:
-  - name: Gacha Machine
+  - name: Gacha Game Simulator
     sceneName: GachaGameScene
     prefabGameIcon: {fileID: 6907782877323676881, guid: 6e9ee51a869ea054f861b3f105e59e47,
       type: 3}
-  - name: Claw Machine
+  - name: Claw Machine Simulator
     sceneName: ClawMachineMain
     prefabGameIcon: {fileID: 7164061512438093400, guid: e2de0416e43811c4db7a1b817cadb106,
       type: 3}

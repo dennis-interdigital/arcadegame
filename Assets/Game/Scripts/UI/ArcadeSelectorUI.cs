@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -224,10 +224,21 @@ namespace InterDigital
         public void OnDrag(PointerEventData eventData)
         {
             if (!isDragging || rootArcadeGameItemContainer == null) return;
+
             pointerCurrentPos = eventData.position;
             float deltaX = pointerCurrentPos.x - pointerStartPos.x;
 
-            Vector3 desired = previewsAnchorStartPos + Vector3.left * (currentIndex * previewSpacing) + Vector3.right * deltaX;
+            // Clamp drag at edges
+            if (currentIndex == 0 && deltaX > 0f)
+                deltaX = 0f;
+            else if (currentIndex == arcadeDatabase.arcadeGameItemList.Count - 1 && deltaX < 0f)
+                deltaX = 0f;
+
+            Vector3 desired =
+                previewsAnchorStartPos
+                + Vector3.left * (currentIndex * previewSpacing)
+                + Vector3.right * deltaX;
+
             rootArcadeGameItemContainer.localPosition = desired;
         }
 
@@ -235,17 +246,30 @@ namespace InterDigital
         {
             if (!isDragging) return;
             isDragging = false;
+
             float deltaX = eventData.position.x - pointerStartPos.x;
 
             if (Mathf.Abs(deltaX) >= swipeThreshold)
             {
-                if (deltaX < 0f) OnClickNext(); else OnClickPrev();
+                // swipe left → next
+                if (deltaX < 0f && currentIndex < arcadeDatabase.arcadeGameItemList.Count - 1)
+                {
+                    OnClickNext();
+                    return;
+                }
+
+                // swipe right → prev
+                if (deltaX > 0f && currentIndex > 0)
+                {
+                    OnClickPrev();
+                    return;
+                }
             }
-            else
-            {
-                SnapToIndex(currentIndex, instant: false);
-            }
+
+            // fallback: snap back to current
+            SnapToIndex(currentIndex, instant: false);
         }
+
     }
 }
 
