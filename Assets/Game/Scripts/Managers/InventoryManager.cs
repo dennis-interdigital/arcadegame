@@ -7,10 +7,10 @@ namespace InterDigital
     [Serializable]
     public class GachaMachineInventoryData
     {
-        public string id;
+        public int id;
         public int amount;
 
-        public GachaMachineInventoryData(string inId, int inAmount)
+        public GachaMachineInventoryData(int inId, int inAmount)
         {
             id = inId;
             amount = inAmount;
@@ -89,23 +89,22 @@ namespace InterDigital
         }
 
         #region GachaMachine
-        public void AddToGachaInventory(string id, int amount)
+        public void AddToGachaInventory(int id, int amount)
         {
-            bool exist = IsGachaInventoryExist(id);
+            GachaMachineInventoryData data = GetGachaMachineInventory(id);
 
-            if (exist)
+            if (data != null)
             {
-                GachaMachineInventoryData data = GetGachaMachineInventory(id);
                 data.amount += amount;
             }
             else
             {
-                GachaMachineInventoryData data = new GachaMachineInventoryData(id, amount);
+                data = new GachaMachineInventoryData(id, amount);
                 userData.gachaMachineData.inventoryDatas.Add(data);
             }
         }
 
-        public bool IsGachaInventoryExist(string id)
+        public bool IsGachaInventoryExist(int id)
         {
             List<GachaMachineInventoryData> list = userData.gachaMachineData.inventoryDatas;
 
@@ -125,7 +124,7 @@ namespace InterDigital
             return result;
         }
 
-        public GachaMachineInventoryData GetGachaMachineInventory(string inId)
+        public GachaMachineInventoryData GetGachaMachineInventory(int inId)
         {
             List<GachaMachineInventoryData> list = userData.gachaMachineData.inventoryDatas;
 
