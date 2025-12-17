@@ -364,7 +364,7 @@ TextureImporter:
         serializedVersion: 2
         x: 678
         y: 1515
-        width: 72
+        width: 71
         height: 172
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -383,9 +383,9 @@ TextureImporter:
       name: ArcadeTitleSprites_8
       rect:
         serializedVersion: 2
-        x: 768
+        x: 769
         y: 1517
-        width: 72
+        width: 71
         height: 170
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
